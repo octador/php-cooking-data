@@ -44,5 +44,37 @@
 // } 
 // print_r(count($arrayEnd));
 // --------------------------------------------------------------------
+$string = file_get_contents("films.json", FILE_USE_INCLUDE_PATH);
+$brut = json_decode($string, true);
+$top = $brut["feed"]["entry"]; # liste de films
 
+// for ($i=0; $i <= 10 ; $i++) {
+// $label = $top[$i]['im:name']['label'];
+//  echo "<p> ". $label . "<p>";
+
+// } 
+// ------------------------------------------------------------------------
+$filmCount = [];
+
+for ($i = 0; $i < count($top) ; $i++) {
+  $label = $top[$i]['im:releaseDate']['label'];
+  $labelYear = $label;
+  $labelTry = $top[$i]['im:releaseDate']['attributes']['label'];
+
+  $yearFirst = substr($label,0, -21);
+
+
+  $year = '2000';
+
+
+   if ($yearFirst < $year) {
+     '<p>' . $labeYear = $top[$i]['im:name']['label'] . '</p>';
+     '<p>'. $labelTry . '</p>';
+
+     $filmCount[] = $labelYear;
+
+    } 
+    
+}
+ print_r('il ya ' .count($filmCount). ' films avant 2000.');
 ?>
